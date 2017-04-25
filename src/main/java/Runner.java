@@ -1,3 +1,4 @@
+import com.biso.analysis.GraphicAnalyzer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -24,12 +25,16 @@ public class Runner {
         logger.info("START");
         handleArguments(args);
 
-        logger.info("END");
+        long startTime = System.currentTimeMillis();
+        GraphicAnalyzer analyzer = new GraphicAnalyzer(instrumentsToTrack, timeChartsToUse, indicators, emailNotificationList);
+        analyzer.run();
+        long stopTime = System.currentTimeMillis();
+        long elapsedTime = stopTime - startTime;
+        logger.info("Analysing took: " + elapsedTime + " ms.");
     }
 
     private static void handleArguments(String[] args) {
         handleArgs(args);
-
         handlePropFile();
     }
 
