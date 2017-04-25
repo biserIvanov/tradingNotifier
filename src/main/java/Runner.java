@@ -18,7 +18,7 @@ public class Runner {
     private static List<String> emailNotificationList;
     private static List<String> indicators;
 
-    public static final Logger logger = LoggerFactory.getLogger(Runner.class);
+    private static final Logger logger = LoggerFactory.getLogger(Runner.class);
 
 
     public static void main(String[] args) {
@@ -53,6 +53,7 @@ public class Runner {
             e.printStackTrace();
         }
 
+        assert prop != null;
         if(instrumentsToTrack == null) {
             instrumentsToTrack = Arrays.asList(prop.getProperty("instrumentsToTrack").split(","));
         }
